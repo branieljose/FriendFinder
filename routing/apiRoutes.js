@@ -60,7 +60,9 @@ const friends = [{
 	
 ]
 
-
+for (var j = 0; j < friends.length; j++){
+	
+}
 router.get("/api/friends", function(request, response){
 		response.json(friends);
 
