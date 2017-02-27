@@ -56,20 +56,19 @@ const friends = [{
 		1,
 		1	
 		]
-},
+}
 	
-];
+]
 
 
 router.get("/api/friends", function(request, response){
-	
 		response.json(friends);
 
 });
 
-router.post("/api/friends", function(resquest, response){
-	friends.push(response.body)
-	response.send(true);
-})
+router.post("/api/new_friends", function(req, res){
+	friends.push(req.body)
+	res.send(friends[0]);
+});
     
 module.exports = router;
