@@ -23,7 +23,8 @@ const friends = [{
 		2,
 		1,
 		1	
-		]
+		],
+	grade: "D"
 }, 
 {
 	name: "Elen",
@@ -39,7 +40,8 @@ const friends = [{
 		2,
 		1,
 		1	
-		]
+		],
+	grade: "B"
 },
 {
 	name: "Maria",
@@ -55,14 +57,13 @@ const friends = [{
 		2,
 		1,
 		1	
-		]
+		],
+	grade: "A"
 }
 	
 ]
 
-for (var j = 0; j < friends.length; j++){
-	
-}
+
 router.get("/api/friends", function(request, response){
 		response.json(friends);
 
@@ -70,7 +71,14 @@ router.get("/api/friends", function(request, response){
 
 router.post("/api/new_friends", function(req, res){
 	friends.push(req.body)
-	res.send(friends[0]);
+
+	for (var j = 0; j < friends.length; j++){
+	if (friends[j].grade === req.body.grade[0]){
+		res.send(friends[j])
+		console.log(req.body.grade[0])
+	}
+}
+	
 });
     
 module.exports = router;
