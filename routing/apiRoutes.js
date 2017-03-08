@@ -1,14 +1,18 @@
+//getting npm packages ready to be used
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 
+//setting up router for implementation
 const router = express.Router();
 
+//setting up the packages to be used by express 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.text());
 router.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+//array of possible matches
 const friends = [{
 	name: "John",
 	photo: "https://www.gv.com/img/team-large/john-lyman.jpg",
@@ -63,12 +67,13 @@ const friends = [{
 	
 ]
 
-
+//route to friends API
 router.get("/api/friends", function(request, response){
 		response.json(friends);
 
 });
 
+//adds new friend to array, matches user with best match
 router.post("/api/new_friends", function(req, res){
 	friends.push(req.body)
 
@@ -80,5 +85,6 @@ router.post("/api/new_friends", function(req, res){
 }
 	
 });
-    
+
+//exporting file to be used on the server.js file    
 module.exports = router;
